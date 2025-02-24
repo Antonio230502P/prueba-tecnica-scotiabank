@@ -1,12 +1,13 @@
 package com.scotiabank.technical_test.controller;
 
-import com.scotiabank.technical_test.dto.PetResponseDto;
+import com.scotiabank.technical_test.dto.PetRequestPdo;
+import com.scotiabank.technical_test.dto.PetResponseGetDto;
+import com.scotiabank.technical_test.dto.PetResponsePostDto;
 import com.scotiabank.technical_test.service.PetService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/api/pet")
@@ -18,7 +19,13 @@ public class PetController {
     }
 
     @GetMapping("/{petId}")
-    public ResponseEntity<PetResponseDto> getPetById(@PathVariable Integer petId){
+    public ResponseEntity<PetResponseGetDto> getPetById(@PathVariable Integer petId){
         return ResponseEntity.ok(this.petService.getPetById(petId));
+    }
+
+    //Importar Valid de Jakarta
+    @PostMapping
+    public ResponseEntity<PetResponsePostDto> addPet(@RequestBody PetRequestPdo petRequestPdo){
+        return new ResponseEntity<>(this.petService.addPet(petRequestPdo), CREATED);
     }
 }
