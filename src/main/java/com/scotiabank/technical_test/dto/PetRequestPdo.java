@@ -3,8 +3,8 @@ package com.scotiabank.technical_test.dto;
 import lombok.Data;
 
 @Data
-public class PetResponseDto {
+public class PetRequestPdo {
     private Integer id;
-    private String name;
     private String status;
+    private String name;
 }
