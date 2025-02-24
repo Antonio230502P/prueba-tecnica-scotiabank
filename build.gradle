@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.3.9'
+	id 'org.springframework.boot' version '3.2.7'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -21,6 +21,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+	annotationProcessor 'org.projectlombok:lombok:1.18.36'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.2.0'
+	compileOnly 'org.mapstruct:mapstruct:1.6.3'
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.6.3"
+	testImplementation 'org.mockito:mockito-core:5.3.1'
+	testImplementation 'org.mockito:mockito-junit-jupiter:5.3.1'
 }
 
 tasks.named('test') {
