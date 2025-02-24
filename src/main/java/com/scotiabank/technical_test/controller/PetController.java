@@ -4,6 +4,7 @@ import com.scotiabank.technical_test.dto.PetRequestPdo;
 import com.scotiabank.technical_test.dto.PetResponseGetDto;
 import com.scotiabank.technical_test.dto.PetResponsePostDto;
 import com.scotiabank.technical_test.service.PetService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,8 @@ public class PetController {
         return ResponseEntity.ok(this.petService.getPetById(petId));
     }
 
-    //Importar Valid de Jakarta
     @PostMapping
-    public ResponseEntity<PetResponsePostDto> addPet(@RequestBody PetRequestPdo petRequestPdo){
+    public ResponseEntity<PetResponsePostDto> addPet(@Valid @RequestBody PetRequestPdo petRequestPdo){
         return new ResponseEntity<>(this.petService.addPet(petRequestPdo), CREATED);
     }
 }
